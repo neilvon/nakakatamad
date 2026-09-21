@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MathSci Event Gallery - Real-Time Shared Feed</title>
+  <title>MathSci Gallery or smth</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,21 +83,9 @@
 
   <header class="border-b-2 border-brandBorder pb-6 mb-8 text-center relative">
     <div class="inline-block bg-cardAlt text-brandAccent border border-brandBorder px-3 py-1 text-xs uppercase tracking-widest font-bold mb-3 retro-box-sm">
-      Math & Science Celebration 📸
+      Math & Science Celebration 
     </div>
-    <h1 class="font-serif text-3xl md:text-5xl font-extrabold text-brandAccent tracking-tight">
-      Live Event Photo Gallery
-    </h1>
-    <p class="text-brandMuted text-sm md:text-base mt-2 max-w-2xl mx-auto">
-      Upload and view shared memories in real-time across all devices. Sync powered by Firebase.
-    </p>
 
-    <!-- Cross-Device Guide Toggle Button -->
-    <div class="mt-4">
-      <button onclick="toggleModal('guideModal')" class="text-xs bg-cardAlt hover:bg-brandAccent hover:text-brandBg text-brandMuted border border-brandBorder px-3 py-1.5 font-bold transition-all">
-        ℹ️ How to test cross-device sync on mobile/desktop
-      </button>
-    </div>
   </header>
 
   <main class="flex-grow">
@@ -107,9 +95,9 @@
       class="bg-cardBg border-2 border-dashed border-brandBorder p-8 md:p-12 text-center mb-10 cursor-pointer retro-box hover:bg-cardAlt transition-all duration-200"
     >
       <div class="space-y-3">
-        <div class="text-4xl">📁</div>
+        <div class="text-4xl"></div>
         <p class="text-brandText font-semibold text-base md:text-lg">
-          Click or Drag & Drop photo(s) here to share live
+          Click or Drag & Drop photo(s) here
         </p>
         <p class="text-brandMuted text-xs">
           Supports JPG, PNG, GIF, WEBP up to 5MB
@@ -136,14 +124,9 @@
     <section>
       <div class="flex justify-between items-center border-b border-cardAlt pb-3 mb-6">
         <h2 class="font-serif text-xl md:text-2xl font-bold text-brandText flex items-center gap-2">
-          <span>Shared Photo Feed</span>
+          <span>Photos</span>
           <span id="photoCountBadge" class="text-xs font-mono bg-cardAlt border border-brandBorder text-brandAccent px-2 py-0.5 rounded-full">0</span>
         </h2>
-        <div class="flex items-center gap-2 text-xs text-brandMuted">
-          <span class="inline-block w-2.5 h-2.5 rounded-full bg-brandAccent animate-pulse"></span>
-          <span>Live Cloud Sync</span>
-        </div>
-      </div>
 
       <!-- Photo Grid -->
       <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -157,8 +140,8 @@
   </main>
 
   <footer class="border-t border-cardAlt pt-6 mt-12 text-center text-xs text-brandMuted space-y-2">
-    <p>MathSci Celebration Photo Platform • Built with Firebase Realtime Firestore & Storage</p>
-    <p class="text-[10px] text-gray-400">All uploaded photos are available to any user viewing this venue link.</p>
+    <p>Built with Firebase Realtime Firestore & Storage</p>
+    <p class="text-[10px] text-gray-400">All uploaded photos are available to any user viewing this link.</p>
   </footer>
 
   <!-- Lightbox Preview Modal -->
@@ -175,31 +158,6 @@
             Close ✖
           </button>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cross-Device Testing Instructions Modal -->
-  <div id="guideModal" class="fixed inset-0 bg-black/80 z-50 hidden flex justify-center items-center p-4">
-    <div class="bg-cardBg border-2 border-brandBorder p-6 md:p-8 max-w-xl w-full retro-box space-y-4 text-sm">
-      <div class="flex justify-between items-center border-b border-cardAlt pb-2">
-        <h3 class="font-serif text-lg font-bold text-brandAccent">📱 Cross-Device Testing Instructions</h3>
-        <button onclick="toggleModal('guideModal')" class="text-brandMuted hover:text-brandAccent font-bold">✖</button>
-      </div>
-      <div class="space-y-3 text-brandText leading-relaxed text-xs md:text-sm">
-        <p>This web app is equipped with real-time cloud synchronization! Here is how to test it with multiple devices:</p>
-        <ol class="list-decimal pl-5 space-y-2 text-brandMuted">
-          <li><strong>Host on GitHub Pages:</strong> Push this <code class="bg-cardAlt text-brandAccent px-1 py-0.5">index.html</code> file to your repository and enable Pages in repository settings.</li>
-          <li><strong>Open on Device A (PC/Laptop):</strong> Open your GitHub Pages link in your desktop web browser.</li>
-          <li><strong>Open on Device B (Smartphone):</strong> Scan the QR code or type the link on your mobile phone (preferably using mobile cellular data to test across distinct networks).</li>
-          <li><strong>Upload a Photo:</strong> Upload an image from Device A or Device B.</li>
-          <li><strong>Observe Instant Sync:</strong> The uploaded photo will automatically pop up in the feed on both devices in real time!</li>
-        </ol>
-      </div>
-      <div class="pt-2 text-right">
-        <button onclick="toggleModal('guideModal')" class="retro-btn bg-brandAccent text-brandBg font-bold px-4 py-2 text-xs uppercase border border-brandBorder">
-          Got It!
-        </button>
       </div>
     </div>
   </div>
