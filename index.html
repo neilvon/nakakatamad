@@ -85,7 +85,6 @@
     <div class="inline-block bg-cardAlt text-brandAccent border border-brandBorder px-3 py-1 text-xs uppercase tracking-widest font-bold mb-3 retro-box-sm">
       Math & Science Celebration 
     </div>
-
   </header>
 
   <main class="flex-grow">
@@ -95,7 +94,7 @@
       class="bg-cardBg border-2 border-dashed border-brandBorder p-8 md:p-12 text-center mb-10 cursor-pointer retro-box hover:bg-cardAlt transition-all duration-200"
     >
       <div class="space-y-3">
-        <div class="text-4xl"></div>
+        <div class="text-4xl">📸</div>
         <p class="text-brandText font-semibold text-base md:text-lg">
           Click or Drag & Drop photo(s) here
         </p>
@@ -127,6 +126,7 @@
           <span>Photos</span>
           <span id="photoCountBadge" class="text-xs font-mono bg-cardAlt border border-brandBorder text-brandAccent px-2 py-0.5 rounded-full">0</span>
         </h2>
+      </div>
 
       <!-- Photo Grid -->
       <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -209,7 +209,6 @@
 
       if (isFirebaseConfigured && auth) {
         try {
-          // Rule 3: Authenticate prior to Firestore operations
           await signInAnonymously(auth);
         } catch (authErr) {
           console.warn("Anonymous auth fallback:", authErr);
@@ -220,7 +219,6 @@
             currentUser = user;
             initRealtimeGallery();
           } else {
-            // Fallback to local demonstration mode if auth unverified
             initLocalFallbackGallery();
           }
         });
@@ -229,12 +227,10 @@
       }
     });
 
-    // Realtime Firestore Listener (Rule 1 & Rule 2 compliant)
+    // Realtime Firestore Listener
     function initRealtimeGallery() {
-      // Path: /artifacts/{appId}/public/data/gallery_photos
       const photosCollection = collection(db, 'artifacts', appId, 'public', 'data', 'gallery_photos');
 
-      // Rule 2: Simple query without complex compound indexing
       onSnapshot(photosCollection, 
         (snapshot) => {
           const photos = [];
@@ -289,7 +285,6 @@
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
 
-            // Compress to standard WebP/JPEG data URL for instant database storage
             const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
             resolve(dataUrl);
           };
@@ -325,7 +320,6 @@
           const compressedDataUrl = await compressImage(file);
 
           if (db && currentUser) {
-            // Upload directly to shared Firestore path
             const photosCollection = collection(db, 'artifacts', appId, 'public', 'data', 'gallery_photos');
             await addDoc(photosCollection, {
               fileName: file.name,
@@ -336,7 +330,6 @@
               displayTime: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             });
           } else {
-            // Local fallback store
             saveLocalFallbackPhoto({
               id: 'local_' + Date.now() + Math.random().toString(36).substr(2, 4),
               fileName: file.name,
@@ -437,7 +430,6 @@
       }, false);
     }
 
-    // Helper functions & Fallback handling
     function escapeHtml(str) {
       return str ? str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") : "photo";
     }
@@ -461,7 +453,6 @@
       renderGalleryItems(localPhotos);
     }
 
-    // Global Modal & Lightbox Handler bindings
     window.openLightbox = function(url, fileName) {
       document.getElementById('lightboxImg').src = url;
       document.getElementById('lightboxFileName').textContent = fileName;
@@ -485,3 +476,6 @@
       }
     };
   </script>
+
+</body>
+</html>
