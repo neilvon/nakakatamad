@@ -140,7 +140,7 @@
   </main>
 
   <footer class="border-t border-cardAlt pt-6 mt-12 text-center text-xs text-brandMuted space-y-2">
-    <p>Built with Firebase Realtime Firestore & Storage</p>
+    <p>Built with Firebase</p>
     <p class="text-[10px] text-gray-400">All uploaded photos are available to any user viewing this link.</p>
   </footer>
 
@@ -178,16 +178,15 @@
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'mathsci-event-gallery';
     
     // Fallback/Default Firebase Config for immediate execution
-    const firebaseConfig = typeof __firebase_config !== 'undefined' 
-      ? JSON.parse(__firebase_config) 
-      : {
-          apiKey: "AIzaSyDemoConfigForTestingPurposesOnly",
-          authDomain: "mathsci-demo.firebaseapp.com",
-          projectId: "mathsci-demo",
-          storageBucket: "mathsci-demo.appspot.com",
-          messagingSenderId: "123456789",
-          appId: "1:123456789:web:demo"
-        };
+const firebaseConfig = {
+  apiKey: "AIzaSyCQXsdZyOd9WmU28BdtcfOhWxUVGoB-jEU",
+  authDomain: "mathsci-77049.firebaseapp.com",
+  projectId: "mathsci-77049",
+  storageBucket: "mathsci-77049.firebasestorage.app",
+  messagingSenderId: "2605339771",
+  appId: "1:2605339771:web:5cf829dfd095c535ca7ede",
+  measurementId: "G-WRQYZ6QHKJ"
+};
 
     let db;
     let auth;
